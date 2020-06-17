@@ -18,6 +18,7 @@ The script must be run with the following requirements:
  - At least Windows Server 2012
  - At least SQL Server 2014 (With Reporting Services and FullText Search)
  - The Account running the script must have rights to connect remotelly and create registry keys on the Domain Controllers
+ - Connectivity trough port TCP 5985 (Default Event Forwarder Port) with the Domain Controllers
  - Internet connection is not required*
  
 
