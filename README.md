@@ -9,7 +9,7 @@ The script
 
 ### How to run:
 
-Just copy or download the HardFinger.ps1 and run on any Windows Server computer that meets the requirements below.
+Just copy or download the HFEventServer.ps1 and run on any Windows Server computer that meets the requirements below.
 
 ### Requirements:
 
