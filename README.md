@@ -1,4 +1,4 @@
-## Hard Finger Script
+## HF Server Events Setup Script
 
 I started this as a personal project to help me during my day to day work on different Active Directory environments.
 
