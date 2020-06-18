@@ -173,7 +173,6 @@ throw $Error
 
 
 function ConfigDCs {
-try{
 Foreach ($DC in $DCs)
 {
 write-host 'Configuring Domain Controllers to Forward Events..'
@@ -182,11 +181,7 @@ Invoke-Command -ScriptBlock {wecutil qc /quiet} -ComputerName $DC.Name
 Invoke-Command -ScriptBlock {if (!(Test-Path 'HKLM:\SOFTWARE\Policies\Microsoft\Windows\EventLog\EventForwarding\SubscriptionManager')) {New-Item -Path 'HKLM:\SOFTWARE\Policies\Microsoft\Windows\EventLog\EventForwarding\SubscriptionManager' -Force | Out-Null}} -ComputerName $DC.Name
 Invoke-Command -ComputerName $DC.Name -ScriptBlock {if (!(Get-ItemProperty -Path 'HKLM:\SOFTWARE\Policies\Microsoft\Windows\EventLog\EventForwarding\SubscriptionManager' -Name 1)) {New-ItemProperty -Path 'HKLM:\SOFTWARE\Policies\Microsoft\Windows\EventLog\EventForwarding\SubscriptionManager' -Name 1 -Value ('Server=http://'+$($args)+':5985/wsman/SubscriptionManager/WEC,Refresh=60') -PropertyType String -Force | Out-Null}}  -ArgumentList $EvtServer
 }
-}
-catch
-{
-throw $Error
-}
+
 }
 
 
