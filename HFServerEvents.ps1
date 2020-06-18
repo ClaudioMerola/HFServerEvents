@@ -6,7 +6,6 @@ $Forest = [system.directoryservices.activedirectory.Forest]::GetCurrentForest()
 
 $DCs = $Forest.domains | ForEach-Object {$_.DomainControllers}
 
-
 ################################################## Configure Collector Server ###########################################################
 
 function ConfigCollector {
@@ -249,7 +248,7 @@ $PsScript | Out-File C:\EvtHF\DefaultScript.ps1
 
 $user = [Security.Principal.WindowsIdentity]::GetCurrent()
 $action = New-ScheduledTaskAction -Execute 'C:\Windows\System32\WindowsPowerShell\v1.0\powershell.exe' -Argument '-NoProfile -WindowStyle Hidden -command "& {C:\EvtHF\DefaultScript.ps1}"'
-$trigger =  New-ScheduledTaskTrigger -Once -at (Get-Date) -RepetitionInterval (New-TimeSpan -hours 1)  -RepetitionDuration ([System.TimeSpan]::MaxValue)
+$trigger =  New-ScheduledTaskTrigger -Once -at (Get-Date) -RepetitionInterval (New-TimeSpan -hours 1)  
 $principal = New-ScheduledTaskPrincipal -UserId $user.Name -LogonType S4U -RunLevel Highest
 $task = New-ScheduledTask -Action $action -Trigger $trigger -Principal $principal -Description "Hourly task to add Forwarded Events into de SQL Server Database. This Task was created automatically by the HF Event Server script (by Claudio Merola)"
 Register-ScheduledTask "HFEventServer\HFEventServer-DCEssentials" -InputObject $task
@@ -2588,38 +2587,51 @@ throw $Error
 
 #################################################### Running the Functions #################################################################
 
-
-Write-Host 'Phase 0 - Complete'
+$Prompt2 = ''
+$Prompt = Read-Host -Prompt 'Install HF Server Events Full? (Y or N)'
+if ($Prompt -eq 'N'){
+Write-Host 'Select Option:'
+Write-Host 'Press "1" to Run Phase 1 - Config Collector'
+Write-Host 'Press "2" to Run Phase 2 - Config SQL Server'
+Write-Host 'Press "3" to Run Phase 3 - Config Domain Controllers'
+Write-Host 'Press "4" to Run Phase 4 - Create local task'
+Write-Host 'Press "5" to Run Phase 5 - Creating Report Files'
+Write-Host 'Press "6" to Run Phase Final Phase - Importing Reports'
+Write-Host 'Press "0" to Exit'
+Write-Host '-----------------------------'
+$Prompt2 = Read-Host -Prompt 'Press Key:'
+if($Prompt2 -eq '0') {exit}
+if($Prompt2 -notin ('1','2','3','4','5','6','0')) {exit}
+}
+elseif ($Prompt -eq 'Y' -or $Prompt2 -eq '1'){
 Write-Host 'Calling Phase 1 - Config Collector'
-
 ConfigCollector
-
 Write-Host 'Phase 1 - Complete'
+}
+if ($Prompt -eq 'Y' -or $Prompt2 -eq '2'){
 Write-Host 'Calling Phase 2 - Config SQL Server'
-
 ConfigSQLServer
-
 Write-Host 'Phase 2 - Complete'
+}
+if ($Prompt -eq 'Y' -or $Prompt2 -eq '3'){
 Write-Host 'Calling Phase 3 - Config Domain Controllers'
-
 ConfigDCs
-
 Write-Host 'Phase 3 - Complete'
+}
+if ($Prompt -eq 'Y' -or $Prompt2 -eq '4'){
 Write-Host 'Calling Phase 4 - Create local task'
-
 CreateTask
-
 Write-Host 'Phase 4 - Complete'
+}
+if ($Prompt -eq 'Y' -or $Prompt2 -eq '5'){
 Write-Host 'Calling Phase 5 - Creating Report Files'
-
 ReportFiles
-
 Write-Host 'Phase 5 - Complete'
+}
+if ($Prompt -eq 'Y' -or $Prompt2 -eq '6'){
 Write-Host 'Calling Final Phase - Importing Reports'
-
 ReportPages
-
 Write-Host 'Final Phase Complete'
 Write-Host 'Installation Complete'
-
+}
 
