@@ -112,7 +112,7 @@ Just use the default "Install and configure"
 
 During the installation, just add the account running the setup as 
 
-![alt text](https://github.com/ClaudioMerola/HFServerEvents/raw/master/Docs/SQL Server Admin.png)
+![alt text](https://github.com/ClaudioMerola/HFServerEvents/raw/master/Docs/"SQL Server Admin.png")
 
 
 <br/><br/>
