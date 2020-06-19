@@ -25,7 +25,7 @@ The final result will be the Web Reports created in the Reporting Services:
  - Configure the Reporting Services Permissions (to give permissions to more users just add them to the Windows "HF Event Report Viewer" local group)
 
 
-The Events forwaded are configured based on the Microsoft's Best Practices (https://docs.microsoft.com/en-us/windows-server/identity/ad-ds/plan/appendix-l--events-to-monitor)
+The Events forwaded are configured based on the Microsoft's Best Practices [Events to monitor](https://docs.microsoft.com/en-us/windows-server/identity/ad-ds/plan/appendix-l--events-to-monitor)
 
 
 
