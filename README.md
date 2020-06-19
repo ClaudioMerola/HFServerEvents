@@ -12,7 +12,7 @@ Even there is no harm in the script itself. It will change a few things in your 
 - Add a registry key in all your Domain Controllers (to configure the Centralized Event Server)
 - Configure WinRM in all your Domain Controllers (this is a default pre-requisite to Event Forwarders to work)
 - Configure Event Forward in all your Domain Controllers (this will enable and start the default “Windows Event Collector” service)
-
+- Adds the account "NETWORK SERVICE" the Domain Group "Log Event Readers"
 
 ### How to run:
 
@@ -36,12 +36,16 @@ The final result will be the Web Reports created in the Reporting Services:
 
 ### Installation.
 
-#### .NET Framework 3.5 Feature
+#### .NET Framework 3.5 Feature 
+
+This is required by the SQL Server
 
 ![alt text](https://github.com/ClaudioMerola/HFServerEvents/raw/master/Docs/DOTNET.png)
 
 
 #### Important Details in the SQL Server Installation.
+
+There is not many configuration required by the SQL Server installation besides the ones listed bellow
 
 ### The Following are required components (Red):
  - Database Engine Services
@@ -54,10 +58,18 @@ The final result will be the Web Reports created in the Reporting Services:
 ![alt text](https://github.com/ClaudioMerola/HFServerEvents/raw/master/Docs/DB.png)
 
 
-### Important Details in the SQL Server Installation.
+### Reporting Services Installation and Configuration:
+
+Just use the default "Install and configure"
+
+![alt text](https://github.com/ClaudioMerola/HFServerEvents/raw/master/Docs/ReportingSetup.png)
 
 
-![alt text](https://github.com/ClaudioMerola/HFServerEvents/raw/master/Docs/ReportWorking.png)
+### After the SQL Server Installation, restart the server.
+
+After the restart, just run the HFEventServer.ps1. 
+
+if no errors occur, the following should have been configured automatically in the local server:
 
 
 
