@@ -69,16 +69,15 @@ The script must be run with the following requirements:
 
 ## Important Details in the SQL Server Installation.
 
-<br/><br/>
+<br/>
 
 There is not many configuration required by the SQL Server installation besides the ones listed bellow
 
-<br/><br/>
 <br/>
 
 ### The Following are required components (Red):
 
-<br/><br/>
+<br/>
 
  - Database Engine Services
  - Full-Text and Semantic Extractions for Search
@@ -86,26 +85,26 @@ There is not many configuration required by the SQL Server installation besides 
  
 ### The Following are recommended components (Blue):
 
-<br/><br/>
+<br/>
 
   - Management Tools - Complete
   
-<br/><br/>
+<br/>
 
 ![alt text](https://github.com/ClaudioMerola/HFServerEvents/raw/master/Docs/DB.png)
 
-<br/><br/>
+<br/>
 
 ### Reporting Services Installation and Configuration:
 
 Just use the default "Install and configure"
 
-<br/><br/>
+<br/>
 
 ![alt text](https://github.com/ClaudioMerola/HFServerEvents/raw/master/Docs/ReportingSetup.png)
 
 <br/><br/>
-<br/><br/>
+<br/>
 
 ### After the SQL Server Installation, restart the server.
 
