@@ -7,9 +7,9 @@ In this project I’m using Windows Server and SQL Server only.
 #### After you join a Windows Server to domain and Install SQL Server. Run the script and it will:
 
  - Configure and enable WinRM and Event Collector Service
- - Create the Event Forward Subscription - following the Microsoft's Best Practices (https://docs.microsoft.com/en-us/windows-server/identity/ad-ds/plan/appendix-l--events-to-monitor)
+ - Create the Event Forward Subscription
  - Configure all the Domain Controllers to forward the events to this server
- - Increase the maximum size of the Forwarded Events to 4 GB (to support a large number of events until the sync task put the events in the database)
+ - Increase the maximum size of the Forwarded Events to 4 GB 
  - Create a local group named: "HF Event Report Viewer"
  - Create the SQL Server database and tables
  - Configure the SQL Server's Full Text Search
@@ -17,6 +17,10 @@ In this project I’m using Windows Server and SQL Server only.
  - Configure the Reporting Services 
  - Create and import the Reporting Services Reports
  - Configure the Reporting Services Permissions (to give permissions to more users just add them to the Windows "HF Event Report Viewer" local group)
+
+
+The Events forwaded are configured based on the Microsoft's Best Practices (https://docs.microsoft.com/en-us/windows-server/identity/ad-ds/plan/appendix-l--events-to-monitor)
+
 
 #### This script may affect your environment!
 
