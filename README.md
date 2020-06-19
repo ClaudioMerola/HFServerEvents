@@ -15,7 +15,13 @@ The final result will be the Web Reports created in the Reporting Services:
 <br/><br/>
 <br/>
 
-## After you join a Windows Server to domain and Install SQL Server. Run the script and it will:
+## Steps:
+
+### 1. Join a Windows Server to domain
+### 2. Install SQL Server 
+### 3. Run the script
+
+## The script will:
 
 <br/><br/>
 
