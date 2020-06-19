@@ -11,7 +11,7 @@ The final result will be the Web Reports created in the Reporting Services:
 \
 \
 \
-\
+ \
 #### After you join a Windows Server to domain and Install SQL Server. Run the script and it will:
 
  - Configure and enable WinRM and Event Collector Service
