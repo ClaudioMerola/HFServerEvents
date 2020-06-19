@@ -162,6 +162,26 @@ The Scheduled Task "HFEventServer\HFEventServer-DCEssentials" were created:
 
 <br/><br/>
 
+And you can browse http://HOSTNAME_OF_YOUR_SERVER/Reports and the folder "HF Event Reports" will be there with the 2 default reports:
+
+<br/><br/>
+
+![alt text](https://github.com/ClaudioMerola/HFServerEvents/raw/master/Docs/ReportingFolder.png)
+
+<br/><br/>
+
+To give permissions to more users access the reports, just add them to the local group "HF Event Report Viewer":
+
+<br/><br/>
+
+![alt text](https://github.com/ClaudioMerola/HFServerEvents/raw/master/Docs/GivePermissions.png)
+
+<br/><br/>
+
+in some environments is necessary to open Internet Explorer elevated (Run as Administrator), to correct see the folder and reports.
+
+<br/><br/>
+
 ### In case one of the steps in the script didn't work as expected. Or if you have an issue during any of the steps. You can run the specific step again after you fix the issue. 
 
 <br/><br/>
