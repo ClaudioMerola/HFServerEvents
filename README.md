@@ -32,24 +32,19 @@ The final result will be the Web Reports created in the Reporting Services:
  - Configure the Reporting Services Permissions (to give permissions to more users just add them to the Windows "HF Event Report Viewer" local group)
 
 <br/><br/>
-<br/><br/>
 <br/>
 
 Obs: The Events forwaded are configured based on the Microsoft's Best Practices [Events to monitor](https://docs.microsoft.com/en-us/windows-server/identity/ad-ds/plan/appendix-l--events-to-monitor)
 
-
 <br/><br/>
-<br/><br/>
-<br/>
-
 
 #### This script may affect your environment!
 
-<br/><br/>
+<br/>
 
 Even there is no harm in the script itself. It will change a few things in your Domain Controller's environment. It will:
 
-<br/><br/>
+<br/>
 
 - Add a registry key in all your Domain Controllers (to configure the Centralized Event Server)
 - Configure WinRM in all your Domain Controllers (this is a default pre-requisite to Event Forwarders to work)
@@ -57,21 +52,18 @@ Even there is no harm in the script itself. It will change a few things in your 
 - Adds the account "NETWORK SERVICE" the Domain Group "Log Event Readers"
 
 <br/><br/>
-<br/><br/>
-<br/><br/>
-<br/><br/>
+<br/>
 
 
 ## How to run the script:
 
 <br/><br/>
-<br/><br/>
+<br/>
 
 On a Windows Server with SQL Server installed, just copy or download the HFEventServer.ps1 and run on any Windows Server computer that meets the requirements below.
 
 <br/><br/>
-<br/><br/>
-<br/><br/>
+<br/>
 
 ### Requirements:
 
@@ -87,13 +79,12 @@ The script must be run with the following requirements:
 | TCP 5985 | Default Event Forwarder Port |
 
 <br/><br/>
-<br/><br/>
-<br/><br/>
+<br/>
 
 # Windows Server Installation.
 
 <br/><br/>
-<br/><br/>
+<br/>
 
 #### .NET Framework 3.5 Feature 
 
@@ -102,7 +93,7 @@ This is required by the SQL Server
 ![alt text](https://github.com/ClaudioMerola/HFServerEvents/raw/master/Docs/DOTNET.png)
 
 <br/><br/>
-<br/><br/>
+<br/>
 
 ## Important Details in the SQL Server Installation.
 
@@ -183,3 +174,15 @@ The Scheduled Task "HFEventServer\HFEventServer-DCEssentials" were created:
 <br/><br/>
 
 ![alt text](https://github.com/ClaudioMerola/HFServerEvents/raw/master/Docs/Task.png)
+
+<br/><br/>
+
+### In case one of the steps in the script didn't work as expected. Or if you have an issue during any of the steps. You can run the specific step again after you fix the issue. 
+
+<br/><br/>
+
+### Just run the script again and select "N", then chose the specific step you want to run:
+
+<br/><br/>
+
+![alt text](https://github.com/ClaudioMerola/HFServerEvents/raw/master/Docs/Script.png)
