@@ -170,7 +170,7 @@ The folder C:\EvtHF and C:\EvtHF\Reports were created and the following files sh
 
 <br/><br/>
 
-The forwarding Subscription were created:
+The forwarding Subscriptions were created:
 
 <br/><br/>
 
@@ -178,4 +178,8 @@ The forwarding Subscription were created:
 
 <br/><br/>
 
-The Scheduled Task ""
+The Scheduled Task "HFEventServer\HFEventServer-DCEssentials" were created:
+
+<br/><br/>
+
+![alt text](https://github.com/ClaudioMerola/HFServerEvents/raw/master/Docs/Task.png)
