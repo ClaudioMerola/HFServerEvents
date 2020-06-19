@@ -29,21 +29,28 @@ The final result will be the Web Reports created in the Reporting Services:
 
 <br/>
 
+#### On the server:
+
  - Configure and enable WinRM and Event Collector Service
  - Create the Event Forward Subscription
  - Configure all the Domain Controllers to forward the events to this server
  - Increase the maximum size of the Forwarded Events to 4 GB 
  - Create a local group named: "HF Event Report Viewer"
- - Add a registry key in all your Domain Controllers (to configure the Centralized Event Server)
- - Configure WinRM in all your Domain Controllers (this is a default pre-requisite to Event Forwarders to work)
- - Configure Event Forward Service in all your Domain Controllers
- - Add the account "NETWORK SERVICE" the Domain Group "Log Event Readers"
  - Create the SQL Server database and tables
  - Configure the SQL Server's Full Text Search
  - Configure a Scheduled Task to Synchronize the Forwarded Events with the SQL Server Database (hourly)
  - Configure the Reporting Services 
  - Create and import the Reporting Services Reports
  - Configure the Reporting Services Permissions (to give permissions to more users just add them to the Windows "HF Event Report Viewer" local group)
+
+<br/>
+
+#### On the Domain Controllers:
+
+ - Add a registry key in all your Domain Controllers (to configure the Centralized Event Server)
+ - Configure WinRM in all your Domain Controllers (this is a default pre-requisite to Event Forwarders to work)
+ - Configure Event Forward Service in all your Domain Controllers
+ - Add the account "NETWORK SERVICE" the Domain Group "Log Event Readers"
 
 <br/><br/>
 
