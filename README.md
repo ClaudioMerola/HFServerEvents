@@ -1,8 +1,14 @@
 ## HF Server Events Setup Script
 
-The main idea of this project is to help companies that don’t want to expend too much money on Centralized Logs solutions. Most of this can be accomplished using default tools in Windows. 
+The main idea of this project is to help companies that don’t want to expend a lot of money on Centralization of Logs solutions. Most of this can be accomplished using default tools in Windows. 
 
-In this project I’m using Windows Server and SQL Server only.
+In this project I’m just using Windows Server and SQL Server only.
+
+The final result will be the Web Reports created in the Reporting Services:
+
+![alt text](https://github.com/ClaudioMerola/HFServerEvents/raw/master/Docs/ReportWorking.png)
+
+
 
 #### After you join a Windows Server to domain and Install SQL Server. Run the script and it will:
 
@@ -22,6 +28,9 @@ In this project I’m using Windows Server and SQL Server only.
 The Events forwaded are configured based on the Microsoft's Best Practices (https://docs.microsoft.com/en-us/windows-server/identity/ad-ds/plan/appendix-l--events-to-monitor)
 
 
+
+
+
 #### This script may affect your environment!
 
 Even there is no harm in the script itself. It will change a few things in your Domain Controller's environment. It will:
@@ -31,9 +40,12 @@ Even there is no harm in the script itself. It will change a few things in your 
 - Configure Event Forward in all your Domain Controllers (this will enable and start the default “Windows Event Collector” service)
 - Adds the account "NETWORK SERVICE" the Domain Group "Log Event Readers"
 
+
+
+
 ### How to run:
 
-Just copy or download the HFEventServer.ps1 and run on any Windows Server computer that meets the requirements below.
+On a Windows Server with SQL Server installed, just copy or download the HFEventServer.ps1 and run on any Windows Server computer that meets the requirements below.
 
 ### Requirements:
 
@@ -45,11 +57,6 @@ The script must be run with the following requirements:
  - Connectivity trough port TCP 5985 (Default Event Forwarder Port) with the Domain Controllers
  - Internet connection is not required*
 
-## Screenshots:
-
-The final result will be the Web Reports created in the Reporting Services:
-
-![alt text](https://github.com/ClaudioMerola/HFServerEvents/raw/master/Docs/ReportWorking.png)
 
 ### Installation.
 
