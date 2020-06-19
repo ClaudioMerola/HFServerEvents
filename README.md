@@ -32,29 +32,35 @@ The script must be run with the following requirements:
 
 The final result will be the Web Reports created in the Reporting Services:
 
-![Detailed](https://github.com/ClaudioMerola/HFServerEvents/raw/master/Docs/ReportWorking.png)
+![alt text](https://github.com/ClaudioMerola/HFServerEvents/raw/master/Docs/ReportWorking.png)
+
+#### Installation.
+
+### .NET Framework 3.5 Feature
+
+![alt text](https://github.com/ClaudioMerola/HFServerEvents/raw/master/Docs/DOTNET.png)
+
+
+### Important Details in the SQL Server Installation.
+
+## The Following are required components (Red):
+ - Database Engine Services
+ - Full-Text and Semantic Extractions for Search
+ - Reporting Services - Native
+ 
+ ## The Following are recommended components (Blue):
+  - Management Tools - Complete
+
+![alt text](https://github.com/ClaudioMerola/HFServerEvents/raw/master/Docs/DB.png)
+
+
+### Important Details in the SQL Server Installation.
+
+
+![alt text](https://github.com/ClaudioMerola/HFServerEvents/raw/master/Docs/ReportWorking.png)
 
 
 
-![alt text](https://github.com/ClaudioMerola/ADxRay/raw/master/Docs/1.png)
+![alt text](https://github.com/ClaudioMerola/HFServerEvents/raw/master/Docs/ReportWorking.png)
 
 
-
-![alt text](https://github.com/ClaudioMerola/ADxRay/raw/master/Docs/2.png)
-
-
-
-![alt text](https://github.com/ClaudioMerola/ADxRay/raw/master/Docs/3.png)
-
-
-
-![alt text](https://github.com/ClaudioMerola/ADxRay/raw/master/Docs/4.png)
-
-
-
-
-![alt text](https://github.com/ClaudioMerola/ADxRay/raw/master/Docs/5.png)
-
-
-
-![alt text](https://github.com/ClaudioMerola/ADxRay/raw/master/Docs/6.png)
