@@ -110,9 +110,11 @@ Just use the default "Install and configure"
 
 ### SQL Server Permissions:
 
-During the installation, just add the account running the setup as 
+During the installation, just add the account running the setup as SQL Server Administrator:
 
-![alt text](https://github.com/ClaudioMerola/HFServerEvents/raw/master/Docs/"SQL Server Admin.png")
+<br/>
+
+![alt text](https://github.com/ClaudioMerola/HFServerEvents/raw/master/Docs/SQLServerAdmin.png)
 
 
 <br/><br/>
