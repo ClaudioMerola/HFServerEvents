@@ -4,10 +4,23 @@ The main idea of this project is to help companies that don’t want to expend t
 
 In this project I’m using Windows Server and SQL Server only.
 
+#### After you join a Windows Server to domain and Install SQL Server. Run the script and it will:
+
+###### - Configure and enable WinRM and Event Collector Service
+###### - Create the Event Forward Subscription - following the Microsoft's Best Practices (https://docs.microsoft.com/en-us/windows-server/identity/ad-ds/plan/appendix-l--events-to-monitor)
+###### - Configure all the Domain Controllers to forward the events to this server
+###### - Increase the maximum size of the Forwarded Events to 4 GB (to support a large number of events until the sync task put the events in the database)
+###### - Create a local group named: "HF Event Report Viewer"
+###### - Create the SQL Server database and tables
+###### - Configure the SQL Server's Full Text Search
+###### - Configure a Scheduled Task to Synchronize the Forwarded Events with the SQL Server Database (hourly)
+###### - Configure the Reporting Services 
+###### - Create and import the Reporting Services Reports
+###### - Configure the Reporting Services Permissions (to give permissions to more users just add them to the Windows "HF Event Report Viewer" local group)
 
 #### This script may affect your environment!
 
-Even there is no harm in the script itself. It will change a few things in your environment. It will:
+Even there is no harm in the script itself. It will change a few things in your Domain Controller's environment. It will:
 
 - Add a registry key in all your Domain Controllers (to configure the Centralized Event Server)
 - Configure WinRM in all your Domain Controllers (this is a default pre-requisite to Event Forwarders to work)
@@ -67,7 +80,7 @@ Just use the default "Install and configure"
 
 ### After the SQL Server Installation, restart the server.
 
-After the restart, just run the HFEventServer.ps1. 
+### After the restart, just run the HFEventServer.ps1. 
 
 if no errors occur, the following should have been configured automatically in the local server:
 
