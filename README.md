@@ -28,27 +28,27 @@ The script must be run with the following requirements:
  - Connectivity trough port TCP 5985 (Default Event Forwarder Port) with the Domain Controllers
  - Internet connection is not required*
 
-#### Screenshots:
+## Screenshots:
 
 The final result will be the Web Reports created in the Reporting Services:
 
 ![alt text](https://github.com/ClaudioMerola/HFServerEvents/raw/master/Docs/ReportWorking.png)
 
-#### Installation.
+### Installation.
 
-### .NET Framework 3.5 Feature
+#### .NET Framework 3.5 Feature
 
 ![alt text](https://github.com/ClaudioMerola/HFServerEvents/raw/master/Docs/DOTNET.png)
 
 
-### Important Details in the SQL Server Installation.
+#### Important Details in the SQL Server Installation.
 
-## The Following are required components (Red):
+### The Following are required components (Red):
  - Database Engine Services
  - Full-Text and Semantic Extractions for Search
  - Reporting Services - Native
  
- ## The Following are recommended components (Blue):
+### The Following are recommended components (Blue):
   - Management Tools - Complete
 
 ![alt text](https://github.com/ClaudioMerola/HFServerEvents/raw/master/Docs/DB.png)
