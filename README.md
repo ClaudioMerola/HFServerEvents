@@ -15,7 +15,7 @@ The final result will be the Web Reports created in the Reporting Services:
 <br/><br/>
 <br/>
 
-#### After you join a Windows Server to domain and Install SQL Server. Run the script and it will:
+## After you join a Windows Server to domain and Install SQL Server. Run the script and it will:
 
 <br/><br/>
 
@@ -62,7 +62,7 @@ Even there is no harm in the script itself. It will change a few things in your 
 <br/><br/>
 
 
-### How to run the script:
+## How to run the script:
 
 <br/><br/>
 <br/><br/>
@@ -90,7 +90,10 @@ The script must be run with the following requirements:
 <br/><br/>
 <br/><br/>
 
-### Installation.
+# Windows Server Installation.
+
+<br/><br/>
+<br/><br/>
 
 #### .NET Framework 3.5 Feature 
 
@@ -98,37 +101,67 @@ This is required by the SQL Server
 
 ![alt text](https://github.com/ClaudioMerola/HFServerEvents/raw/master/Docs/DOTNET.png)
 
+<br/><br/>
+<br/><br/>
 
-#### Important Details in the SQL Server Installation.
+## Important Details in the SQL Server Installation.
+
+<br/><br/>
 
 There is not many configuration required by the SQL Server installation besides the ones listed bellow
 
+<br/><br/>
+<br/>
+
 ### The Following are required components (Red):
+
+<br/><br/>
+
  - Database Engine Services
  - Full-Text and Semantic Extractions for Search
  - Reporting Services - Native
  
 ### The Following are recommended components (Blue):
+
+<br/><br/>
+
   - Management Tools - Complete
+  
+<br/><br/>
 
 ![alt text](https://github.com/ClaudioMerola/HFServerEvents/raw/master/Docs/DB.png)
 
+<br/><br/>
 
 ### Reporting Services Installation and Configuration:
 
 Just use the default "Install and configure"
 
+<br/><br/>
+
 ![alt text](https://github.com/ClaudioMerola/HFServerEvents/raw/master/Docs/ReportingSetup.png)
 
+<br/><br/>
+<br/><br/>
 
 ### After the SQL Server Installation, restart the server.
 
+<br/>
+
 ### After the restart, just run the HFEventServer.ps1. 
 
-if no errors occur, the following should have been configured automatically in the local server:
+If everything runs correctly, the following should have been configured automatically in the local server:
 
+<br/><br/>
 
+A local group named "HF Event Report Viewer" must now exist:
 
-![alt text](https://github.com/ClaudioMerola/HFServerEvents/raw/master/Docs/ReportWorking.png)
+<br/>
+
+![alt text](https://github.com/ClaudioMerola/HFServerEvents/raw/master/Docs/LocalGroup.png)
+
+<br/><br/>
+
+The folder C:\EvtHF and C:\EvtHF\Reports were created and the following files should be there:
 
 
