@@ -32,7 +32,7 @@ The script must be run with the following requirements:
 
 The final result will be the Web Reports created in the Reporting Services:
 
-![alt text](https://github.com/ClaudioMerola/HFServerEvents/raw/master/Docs/ReportWorking.png)
+![Detailed](https://github.com/ClaudioMerola/HFServerEvents/raw/master/Docs/ReportWorking.png)
 
 
 
