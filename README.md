@@ -2,6 +2,8 @@
 
 The main idea of this project is to help companies that don’t want to expend a lot of money on Centralization of Logs solutions. Most of this can be accomplished using default tools in Windows. 
 
+<br/>
+
 This is the v1 of this project and I’m just using Windows Server and SQL Server.
 
 <br/><br/>
