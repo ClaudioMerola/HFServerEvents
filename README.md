@@ -2,8 +2,10 @@
 
 The main idea of this project is to help companies that don’t want to expend a lot of money on Centralization of Logs solutions. Most of this can be accomplished using default tools in Windows. 
 
-In this project I’m just using Windows Server and SQL Server only.
-<br/><br/>
+This is the v1 of this project and I’m just using Windows Server and SQL Server.
+<br/>
+I'm already working in a new HF Server Events v2 that will much likely be based on Windows Server and ElasticSearch to support larger environments.
+<br/>
 <br/>
 
 The final result will be the Web Reports created in the Reporting Services:
