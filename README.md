@@ -67,20 +67,6 @@ The script must be run with the following requirements:
 <br/><br/>
 <br/>
 
-# Windows Server Installation.
-
-<br/><br/>
-<br/>
-
-#### .NET Framework 3.5 Feature 
-
-This is required by the SQL Server
-
-![alt text](https://github.com/ClaudioMerola/HFServerEvents/raw/master/Docs/DOTNET.png)
-
-<br/><br/>
-<br/>
-
 ## Important Details in the SQL Server Installation.
 
 <br/><br/>
