@@ -4,8 +4,7 @@ The main idea of this project is to help companies that don’t want to expend a
 
 In this project I’m just using Windows Server and SQL Server only.
 <br/><br/>
-<br/><br/>
-<br/><br/>
+<br/>
 
 The final result will be the Web Reports created in the Reporting Services:
 
@@ -14,7 +13,7 @@ The final result will be the Web Reports created in the Reporting Services:
 ![alt text](https://github.com/ClaudioMerola/HFServerEvents/raw/master/Docs/ReportWorking.png)
 
 <br/><br/>
-<br/><br/>
+<br/>
 
 #### After you join a Windows Server to domain and Install SQL Server. Run the script and it will:
 
@@ -34,17 +33,14 @@ The final result will be the Web Reports created in the Reporting Services:
 
 <br/><br/>
 <br/><br/>
-<br/><br/>
-<br/><br/>
+<br/>
 
 Obs: The Events forwaded are configured based on the Microsoft's Best Practices [Events to monitor](https://docs.microsoft.com/en-us/windows-server/identity/ad-ds/plan/appendix-l--events-to-monitor)
 
 
 <br/><br/>
 <br/><br/>
-<br/><br/>
-<br/><br/>
-<br/><br/>
+<br/>
 
 
 #### This script may affect your environment!
