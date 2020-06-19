@@ -17,9 +17,14 @@ The final result will be the Web Reports created in the Reporting Services:
 
 ## Steps:
 
+<br/>
+
 ### 1. Join a Windows Server to domain
 ### 2. Install SQL Server 
 ### 3. Run the script
+
+<br/><br/>
+<br/>
 
 ## The script will:
 
