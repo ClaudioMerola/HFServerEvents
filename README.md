@@ -106,6 +106,15 @@ Just use the default "Install and configure"
 
 ![alt text](https://github.com/ClaudioMerola/HFServerEvents/raw/master/Docs/ReportingSetup.png)
 
+<br/>
+
+### SQL Server Permissions:
+
+During the installation, just add the account running the setup as 
+
+![alt text](https://github.com/ClaudioMerola/HFServerEvents/raw/master/Docs/SQL Server Admin.png)
+
+
 <br/><br/>
 <br/>
 
