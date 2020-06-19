@@ -35,6 +35,10 @@ The final result will be the Web Reports created in the Reporting Services:
  - Configure all the Domain Controllers to forward the events to this server
  - Increase the maximum size of the Forwarded Events to 4 GB 
  - Create a local group named: "HF Event Report Viewer"
+ - Add a registry key in all your Domain Controllers (to configure the Centralized Event Server)
+ - Configure WinRM in all your Domain Controllers (this is a default pre-requisite to Event Forwarders to work)
+ - Configure Event Forward Service in all your Domain Controllers
+ - Add the account "NETWORK SERVICE" the Domain Group "Log Event Readers"
  - Create the SQL Server database and tables
  - Configure the SQL Server's Full Text Search
  - Configure a Scheduled Task to Synchronize the Forwarded Events with the SQL Server Database (hourly)
@@ -48,33 +52,6 @@ The final result will be the Web Reports created in the Reporting Services:
 Obs: The Events forwaded are configured based on the Microsoft's Best Practices [Events to monitor](https://docs.microsoft.com/en-us/windows-server/identity/ad-ds/plan/appendix-l--events-to-monitor)
 
 <br/><br/>
-
-#### This script may affect your environment!
-
-<br/>
-
-Even there is no harm in the script itself. It will change a few things in your Domain Controller's environment. It will:
-
-<br/>
-
-- Add a registry key in all your Domain Controllers (to configure the Centralized Event Server)
-- Configure WinRM in all your Domain Controllers (this is a default pre-requisite to Event Forwarders to work)
-- Configure Event Forward in all your Domain Controllers (this will enable and start the default “Windows Event Collector” service)
-- Adds the account "NETWORK SERVICE" the Domain Group "Log Event Readers"
-
-<br/><br/>
-<br/>
-
-
-## How to run the script:
-
-<br/><br/>
-<br/>
-
-On a Windows Server with SQL Server installed, just copy or download the HFEventServer.ps1 and run on any Windows Server computer that meets the requirements below.
-
-<br/><br/>
-<br/>
 
 ### Requirements:
 
