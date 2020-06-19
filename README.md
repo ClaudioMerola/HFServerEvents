@@ -52,11 +52,13 @@ On a Windows Server with SQL Server installed, just copy or download the HFEvent
 
 The script must be run with the following requirements:
 
- - The script was tested in Windows Server 2012 and Windows Server 2019
- - The SQL Server 2014 was the only version tested (you must also install “Reporting Services” and “FullText Search”. This is detailed  in the screenshots)
- - The Account running the script must have rights to connect remotelly and create registry keys on the Domain Controllers
- - Connectivity trough port TCP 5985 (Default Event Forwarder Port) with the Domain Controllers
- - Internet connection is not required*
+| Requirements | Description |
+| --- | --- |
+| Windows Server | tested in Windows Server 2012 and Windows Server 2019 |
+| SQL Server | SQL Server 2014 was the only version tested |
+| Domain Account | must have rights to connect remotelly and create registry keys on the Domain Controllers | 
+| TCP 5985 | Default Event Forwarder Port |
+
 
 
 ### Installation.
