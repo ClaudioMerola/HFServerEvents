@@ -24,11 +24,10 @@ The final result will be the Web Reports created in the Reporting Services:
 ### 3. Run the script
 
 <br/><br/>
-<br/>
 
 ## The script will:
 
-<br/><br/>
+<br/>
 
  - Configure and enable WinRM and Event Collector Service
  - Create the Event Forward Subscription
@@ -47,7 +46,6 @@ The final result will be the Web Reports created in the Reporting Services:
  - Configure the Reporting Services Permissions (to give permissions to more users just add them to the Windows "HF Event Report Viewer" local group)
 
 <br/><br/>
-<br/>
 
 Obs: The Events forwaded are configured based on the Microsoft's Best Practices [Events to monitor](https://docs.microsoft.com/en-us/windows-server/identity/ad-ds/plan/appendix-l--events-to-monitor)
 
