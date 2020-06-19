@@ -1,10 +1,17 @@
 ## HF Server Events Setup Script
 
-I started this as a personal project to help me during my day to day work on different Active Directory environments.
+The main idea of this project is to help companies that don’t want to expend too much money on Centralized Logs solutions. Most of this can be accomplished using default tools in Windows. 
 
-The script 
+In this project I’m using Windows Server and SQL Server only.
+
 
 #### This script may affect your environment!
+
+Even there is no harm in the script itself. It will change a few things in your environment. It will:
+
+- Add a registry key in all your Domain Controllers (to configure the Centralized Event Server)
+- Configure WinRM in all your Domain Controllers (this is a default pre-requisite to Event Forwarders to work)
+- Configure Event Forward in all your Domain Controllers (this will enable and start the default “Windows Event Collector” service)
 
 
 ### How to run:
@@ -15,20 +22,17 @@ Just copy or download the HFEventServer.ps1 and run on any Windows Server comput
 
 The script must be run with the following requirements:
 
- - At least Windows Server 2012
- - At least SQL Server 2014 (With Reporting Services and FullText Search)
+ - The script was tested in Windows Server 2012 and Windows Server 2019
+ - The SQL Server 2014 was the only version tested (you must also install “Reporting Services” and “FullText Search”. This is detailed  in the screenshots)
  - The Account running the script must have rights to connect remotelly and create registry keys on the Domain Controllers
  - Connectivity trough port TCP 5985 (Default Event Forwarder Port) with the Domain Controllers
  - Internet connection is not required*
- 
-
 
 #### Screenshots:
 
+The final result will be the Web Reports created in the Reporting Services:
 
-
-
-![alt text](https://github.com/ClaudioMerola/ADxRay/raw/master/Docs/0.png)
+![alt text](https://github.com/ClaudioMerola/HFServerEvents/raw/master/Docs/ReportWorking.png)
 
 
 
