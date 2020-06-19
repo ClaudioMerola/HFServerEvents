@@ -164,4 +164,18 @@ A local group named "HF Event Report Viewer" must now exist:
 
 The folder C:\EvtHF and C:\EvtHF\Reports were created and the following files should be there:
 
+<br/><br/>
 
+![alt text](https://github.com/ClaudioMerola/HFServerEvents/raw/master/Docs/Files.png)
+
+<br/><br/>
+
+The forwarding Subscription were created:
+
+<br/><br/>
+
+![alt text](https://github.com/ClaudioMerola/HFServerEvents/raw/master/Docs/Subscription.png)
+
+<br/><br/>
+
+The Scheduled Task ""
