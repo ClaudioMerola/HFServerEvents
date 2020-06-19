@@ -84,15 +84,11 @@ There is not many configuration required by the SQL Server installation besides 
 
 ### The Following are required components (Red):
 
-<br/>
-
  - Database Engine Services
  - Full-Text and Semantic Extractions for Search
  - Reporting Services - Native
  
 ### The Following are recommended components (Blue):
-
-<br/>
 
   - Management Tools - Complete
   
