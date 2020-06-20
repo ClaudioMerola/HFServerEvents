@@ -6,9 +6,6 @@ The main idea of this project is to help companies that don’t want to expend a
 
 This is the v1 of this project and I’m just using Windows Server and SQL Server.
 
-<br/><br/>
-
-I'm already working in a new HF Server Events v2 that will much likely be based on Windows Server and ElasticSearch to support larger environments.
 
 <br/><br/>
 
@@ -198,3 +195,7 @@ in some environments is necessary to open Internet Explorer elevated (Run as Adm
 <br/><br/>
 
 ![alt text](https://github.com/ClaudioMerola/HFServerEvents/raw/master/Docs/Script.png)
+
+<br/><br/>
+
+I'm already working in a new HF Server Events v2 that will much likely be based on Windows Server and ElasticSearch to support larger environments.
