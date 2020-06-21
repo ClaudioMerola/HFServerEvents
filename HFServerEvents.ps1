@@ -304,15 +304,39 @@ Invoke-Command -ComputerName $DC.Name -ScriptBlock {net localgroup "Event Log Re
 Function CreateTask {
 try{
 $PsScript = @'
-$XMLQuery = @"
-<QueryList>
-  <Query Id="0" Path="ForwardedEvents">
-    <Select Path="ForwardedEvents">*[System[TimeCreated[timediff(@SystemTime) &lt;= 3900000]]]</Select>
-  </Query>
-</QueryList>
-"@
+$time = Get-Date 
 
-$events = Get-WinEvent -FilterXml $XMLQuery |  Select-Object ID, LevelDisplayName, LogName, MachineName, Message, ProviderName, RecordID, TaskDisplayName, TimeCreated  | ? {$_.LogName -eq 'System'}
+$SyncLog = ("C:\EvtHF\DBSync.log") 
+if ((test-path $SyncLog) -eq $false) 
+{
+new-item $SyncLog -Type file -Force
+Add-Content $SyncLog 'New HF Event Server Database Sincronization log'
+Add-Content $SyncLog ('New HF DB Sync log created at: '+$time)
+Add-Content $SyncLog ('Starting First Sync')
+}
+
+if (!(Get-Item -Path 'HKLM:\SOFTWARE\HFEvents' -ErrorAction SilentlyContinue)) 
+{
+New-Item -Path 'HKLM:\SOFTWARE\HFEvents' -Force | Out-Null
+New-ItemProperty -Path 'HKLM:\SOFTWARE\HFEvents' -Name 'LastSync' -Value $time -PropertyType string -Force | Out-Null
+$Regkey = $false
+} 
+else 
+{
+$Regkey = $true
+}
+if ($Regkey -eq $true) {$TimeKey = Get-ItemProperty -Path 'HKLM:\SOFTWARE\HFEvents' -Name 'LastSync' -ErrorAction SilentlyContinue}
+
+$events = Get-WinEvent -LogName 'ForwardedEvents' | Select-Object ID, LevelDisplayName, LogName, MachineName, Message, ProviderName, RecordID, TaskDisplayName, TimeCreated  | ? {$_.LogName -eq 'System'}
+$totalevts = $events.Count
+$curtime = (Get-Date)
+if ($Regkey -eq $true) 
+{
+$events = $events | ? {$_.TimeCreated -ge [DateTime]$TimeKey.LastSync}
+$totalevts = $events.Count
+}
+
+Add-Content $SyncLog ([string]$curtime+' - Starting DB Sync of: '+$totalevts + ' System Events.')
 
 $EvtServer = ((Get-WmiObject win32_computersystem).DNSHostName+"."+(Get-WmiObject win32_computersystem).Domain)
 
@@ -336,7 +360,17 @@ foreach ($event in $events)
 
 $bulkCopy.WriteToServer($dt)
 
-$events = Get-WinEvent -FilterXml $XMLQuery |  Select-Object ID, LevelDisplayName, LogName, MachineName, Message, ProviderName, RecordID, TaskDisplayName, TimeCreated  | ? {$_.LogName -eq 'Security'}
+$events = Get-WinEvent -LogName 'ForwardedEvents' |  Select-Object ID, LevelDisplayName, LogName, MachineName, Message, ProviderName, RecordID, TaskDisplayName, TimeCreated  | ? {$_.LogName -eq 'Security'}
+$totalevts = $events.Count
+$curtime = (Get-Date)
+
+if ($Regkey -eq $true) 
+{
+$events = $events | ? {$_.TimeCreated -ge [DateTime]$TimeKey.LastSync}
+$totalevts = $events.Count
+}
+
+Add-Content $SyncLog ([string]$curtime+' - Starting DB Sync of: '+$totalevts + ' Security Events.')
 
 $connectionString2 = ('Data Source='+$EvtServer+';Integrated Security=true;Initial Catalog=EventServerDB;')
 $bulkCopy = new-object ("Data.SqlClient.SqlBulkCopy") $connectionString
@@ -356,6 +390,8 @@ foreach ($event in $events)
   }
 
 $bulkCopy.WriteToServer($dt)
+
+if ($Regkey -eq $true) {Set-ItemProperty -Path 'HKLM:\SOFTWARE\HFEvents' -Name 'LastSync' -Value $time -Force | Out-Null}
 '@
 
 $PsScript | Out-File C:\EvtHF\DefaultScript.ps1
