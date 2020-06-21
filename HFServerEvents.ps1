@@ -327,13 +327,15 @@ $Regkey = $true
 }
 if ($Regkey -eq $true) {$TimeKey = Get-ItemProperty -Path 'HKLM:\SOFTWARE\HFEvents' -Name 'LastSync' -ErrorAction SilentlyContinue}
 
-$events = Get-WinEvent -LogName 'ForwardedEvents' | Select-Object ID, LevelDisplayName, LogName, MachineName, Message, ProviderName, RecordID, TaskDisplayName, TimeCreated  | ? {$_.LogName -eq 'System'}
-$totalevts = $events.Count
+$events = Get-WinEvent -LogName 'ForwardedEvents' | Select-Object ID, LevelDisplayName, LogName, MachineName, Message, ProviderName, RecordID, TaskDisplayName, TimeCreated 
 $curtime = (Get-Date)
+
+$evt = $events | ? {$_.LogName -eq 'System'}
+$totalevts = $evt.Count
 if ($Regkey -eq $true) 
 {
-$events = $events | ? {$_.TimeCreated -ge [DateTime]$TimeKey.LastSync}
-$totalevts = $events.Count
+$evt = $evt | ? {$_.TimeCreated -ge [DateTime]$TimeKey.LastSync}
+$totalevts = $evt.Count
 }
 
 Add-Content $SyncLog ([string]$curtime+' - Starting DB Sync of: '+$totalevts + ' System Events.')
@@ -346,11 +348,11 @@ $bulkCopy = new-object ("Data.SqlClient.SqlBulkCopy") $connectionString
 $bulkCopy.DestinationTableName = "SystemLog"
 $dt = New-Object "System.Data.DataTable"
 
-$cols = $events | select -first 1 | get-member -MemberType NoteProperty | select -Expand Name
+$cols = $evt | select -first 1 | get-member -MemberType NoteProperty | select -Expand Name
 $null = $dt.Columns.Add('SQLID')
 foreach ($col in $cols)  {$null = $dt.Columns.Add($col)}
 
-foreach ($event in $events)
+foreach ($event in $evt)
   {
      $row = $dt.NewRow()
      $row.Item('SQLID') = (([guid]::NewGuid()).Guid)
@@ -360,28 +362,29 @@ foreach ($event in $events)
 
 $bulkCopy.WriteToServer($dt)
 
-$events = Get-WinEvent -LogName 'ForwardedEvents' |  Select-Object ID, LevelDisplayName, LogName, MachineName, Message, ProviderName, RecordID, TaskDisplayName, TimeCreated  | ? {$_.LogName -eq 'Security'}
-$totalevts = $events.Count
+
 $curtime = (Get-Date)
+
+$evt = $events | ? {$_.LogName -eq 'Security'}
+$totalevts = $evt.Count
 
 if ($Regkey -eq $true) 
 {
-$events = $events | ? {$_.TimeCreated -ge [DateTime]$TimeKey.LastSync}
-$totalevts = $events.Count
+$evt = $evt | ? {$_.TimeCreated -ge [DateTime]$TimeKey.LastSync}
+$totalevts = $evt.Count
 }
 
 Add-Content $SyncLog ([string]$curtime+' - Starting DB Sync of: '+$totalevts + ' Security Events.')
 
-$connectionString2 = ('Data Source='+$EvtServer+';Integrated Security=true;Initial Catalog=EventServerDB;')
 $bulkCopy = new-object ("Data.SqlClient.SqlBulkCopy") $connectionString
 $bulkCopy.DestinationTableName = "SecurityLog"
 $dt = New-Object "System.Data.DataTable"
 
-$cols = $events | select -first 1 | get-member -MemberType NoteProperty | select -Expand Name
+$cols = $evt | select -first 1 | get-member -MemberType NoteProperty | select -Expand Name
 $null = $dt.Columns.Add('SQLID')
 foreach ($col in $cols)  {$null = $dt.Columns.Add($col)}
 
-foreach ($event in $events)
+foreach ($event in $evt)
   {
      $row = $dt.NewRow()
      $row.Item('SQLID') = (([guid]::NewGuid()).Guid)
