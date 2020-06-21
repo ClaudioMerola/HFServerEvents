@@ -170,7 +170,7 @@ Invoke-Command -ScriptBlock {New-NetFirewallRule -DisplayName 'HF Server Event R
 
 write-host 'Setting Forwarded Events Max Size to 4 GB..'
 
-Set-Itemproperty -path 'HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion\WINEVT\Channels\ForwardedEvents' -Name 'MaxSize' -value '4294901760' 
+Set-Itemproperty -path 'HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion\WINEVT\Channels\ForwardedEvents' -Name 'MaxSize' -value '1193424384'
 
 }
 catch
@@ -325,9 +325,26 @@ else
 {
 $Regkey = $true
 }
-if ($Regkey -eq $true) {$TimeKey = Get-ItemProperty -Path 'HKLM:\SOFTWARE\HFEvents' -Name 'LastSync' -ErrorAction SilentlyContinue}
 
-$events = Get-WinEvent -LogName 'ForwardedEvents' | Select-Object ID, LevelDisplayName, LogName, MachineName, Message, ProviderName, RecordID, TaskDisplayName, TimeCreated 
+if ($Regkey -eq $true) 
+{
+$TimeKey = Get-ItemProperty -Path 'HKLM:\SOFTWARE\HFEvents' -Name 'LastSync' -ErrorAction SilentlyContinue
+$timediff = [int](New-TimeSpan -Start (Get-Date -Date $TimeKey.LastSync) -End (Get-Date)).TotalMilliseconds
+
+$XMLQuery = @"
+<QueryList>
+  <Query Id="0" Path="ForwardedEvents">
+    <Select Path="ForwardedEvents">*[System[TimeCreated[timediff(@SystemTime) &lt;= $timediff ]]]</Select>
+  </Query>
+</QueryList>
+"@
+
+$events = Get-WinEvent -FilterXml $XMLQuery  |  Select-Object ID, LevelDisplayName, LogName, MachineName, Message, ProviderName, RecordID, TaskDisplayName, TimeCreated 
+}
+else
+{
+$events = Get-WinEvent -LogName 'ForwardedEvents' | Select-Object ID, LevelDisplayName, LogName, MachineName, Message, ProviderName, RecordID, TaskDisplayName, TimeCreated
+}
 $curtime = (Get-Date)
 
 $evt = $events | ? {$_.LogName -eq 'System'}
@@ -346,6 +363,7 @@ $connectionString = ('Data Source='+$EvtServer+';Integrated Security=true;Initia
 
 $bulkCopy = new-object ("Data.SqlClient.SqlBulkCopy") $connectionString
 $bulkCopy.DestinationTableName = "SystemLog"
+$bulkCopy.BulkCopyTimeout = 900
 $dt = New-Object "System.Data.DataTable"
 
 $cols = $evt | select -first 1 | get-member -MemberType NoteProperty | select -Expand Name
@@ -378,6 +396,7 @@ Add-Content $SyncLog ([string]$curtime+' - Starting DB Sync of: '+$totalevts + '
 
 $bulkCopy = new-object ("Data.SqlClient.SqlBulkCopy") $connectionString
 $bulkCopy.DestinationTableName = "SecurityLog"
+$bulkCopy.BulkCopyTimeout = 900
 $dt = New-Object "System.Data.DataTable"
 
 $cols = $evt | select -first 1 | get-member -MemberType NoteProperty | select -Expand Name
@@ -2807,4 +2826,3 @@ ReportPages
 Write-Host 'Final Phase Complete'
 Write-Host 'Installation Complete'
 }
-
