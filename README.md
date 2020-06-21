@@ -38,7 +38,7 @@ The final result will be the Web Reports created in the Reporting Services:
  - Configure and enable WinRM and Event Collector Service
  - Create the Event Forward Subscription
  - Configure all the Domain Controllers to forward the events to this server
- - Increase the maximum size of the Forwarded Events to 4 GB 
+ - Increase the maximum size of the Forwarded Events to 1 GB* 
  - Create a local group named: "HF Event Report Viewer"
  - Create the SQL Server database and tables
  - Configure the SQL Server's Full Text Search
@@ -46,6 +46,11 @@ The final result will be the Web Reports created in the Reporting Services:
  - Configure the Reporting Services 
  - Create and import the Reporting Services Reports
  - Configure the Reporting Services Permissions (to give permissions to more users just add them to the Windows "HF Event Report Viewer" local group)
+
+<br/>
+<br/>
+
+* *Forwarded Events is set to 1 GB because that’s the acceptable size to be managed easily by Powershell. That will be about 250.000 events. A greater size can become too heavy to Powershell deals with in less than 15 minutes (that’s the timeout set in the DB sync script) 
 
 <br/>
 
