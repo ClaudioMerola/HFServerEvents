@@ -4,6 +4,14 @@ The main idea of this project is to help companies that don’t want to expend a
 
 <br/>
 
+# This Project is outdated.
+
+### A newer version of this project is avaible at: https://github.com/ClaudioMerola/HFServerEventsV2
+
+#### The newer version is powered by Windows Server + Elasticsearch, Kibana and WinLogBeat. All opensource and free.
+
+<br/>
+
 This is the v1 of this project and I’m just using Windows Server and SQL Server.
 
 
@@ -202,5 +210,3 @@ in some environments is necessary to open Internet Explorer elevated (Run as Adm
 ![alt text](https://github.com/ClaudioMerola/HFServerEvents/raw/master/Docs/Script.png)
 
 <br/><br/>
-
-I'm already working in a new HF Server Events v2 that will much likely be based on Windows Server and ElasticSearch to support larger environments.
